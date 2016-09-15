@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table
 public class ToDo {
+
     @Id
     @GeneratedValue
     int id;
@@ -22,14 +23,6 @@ public class ToDo {
     public ToDo(String text) {
         this.id = id;
         this.text = text;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getText() {
