@@ -1,0 +1,16 @@
+<html>
+<body>
+<form action="/add-todo" method="post">
+    <input type="text" placeholder="Name" name="todoText"/>
+    <button type="submit">Add Todo</button>
+</form>
+
+<ol>
+    {{#todos}}
+    <li>{{text}}</li>
+    {{/todos}}
+</ol>
+
+
+</body>
+</html>
