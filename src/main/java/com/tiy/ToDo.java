@@ -17,12 +17,16 @@ public class ToDo {
     @Column(nullable = false)
     String text;
 
+    @ManyToOne
+    User user;
+
     public ToDo() {
     }
 
-    public ToDo(String text) {
+    public ToDo(String text, User user) {
         this.id = id;
         this.text = text;
+        this.user = user;
     }
 
     public String getText() {

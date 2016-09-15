@@ -1,6 +1,21 @@
 <html>
 <body>
 
+{{^user}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Username" name="userName" required/>
+    <input type="password" placeholder="Password" name="password" required/>
+    <button type="submit">Login</button>
+</form>
+{{/user}}
+
+{{#user}}
+Welcome, {{name}}!
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+<br><br>
+
 <form action="/add-todo" method="post">
     <input type="text" placeholder="Name" name="toDoText"/>
     <button type="submit">Add Todo</button>
@@ -12,6 +27,6 @@
     {{/todos}}
 </ol>
 
-
+{{/user}}
 </body>
 </html>
