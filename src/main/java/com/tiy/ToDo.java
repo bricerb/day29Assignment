@@ -19,7 +19,7 @@ public class ToDo {
     public ToDo() {
     }
 
-    public ToDo(int id, String text) {
+    public ToDo(String text) {
         this.id = id;
         this.text = text;
     }

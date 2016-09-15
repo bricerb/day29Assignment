@@ -1,5 +1,6 @@
 <html>
 <body>
+
 <form action="/add-todo" method="post">
     <input type="text" placeholder="Name" name="todoText"/>
     <button type="submit">Add Todo</button>
@@ -7,7 +8,9 @@
 
 <ol>
     {{#todos}}
-    <li>{{text}}</li>
+    <li>{{text}} <a href="/delete?todoID={{id}}">delete</a></li>
+    {{/games}}
+</ol>
     {{/todos}}
 </ol>
 
