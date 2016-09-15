@@ -22,12 +22,12 @@ public class ToDoController {
     @RequestMapping(path="/", method = RequestMethod.GET)
     public String home(Model model) {
 
-        Iterable<ToDo> alltodos = todos.findAll();
-        List<ToDo> gameList = new ArrayList<>();
-        for (ToDo currentToDo : alltodos) {
-            gameList.add(currentToDo);
+        Iterable<ToDo> allTodos = todos.findAll();
+        List<ToDo> toDoList = new ArrayList<>();
+        for (ToDo currentToDo : allTodos) {
+            toDoList.add(currentToDo);
         }
-        model.addAttribute("games", gameList);
+        model.addAttribute("todos", toDoList);
 
         return "home";
     }
