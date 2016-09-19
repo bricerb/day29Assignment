@@ -38,13 +38,12 @@ public class ToDoController {
     public String login(HttpSession session, String userName, String password) throws Exception {
         User user = users.findFirstByName(userName);
         if (user == null) {
-            user = new User(userName, password);
-            users.save(user);
-        }
-        else if (!password.equals(user.getPassword())) {
+            throw new Exception("Username not found");
+        } else if (!password.equals(user.getPassword())) {
             throw new Exception("Incorrect password");
+        } else {
+            session.setAttribute("user", user);
         }
-        session.setAttribute("user", user);
         return "redirect:/";
     }
 
@@ -56,15 +55,21 @@ public class ToDoController {
 
     @RequestMapping(path="/", method = RequestMethod.GET)
     public String home(HttpSession session, Model model) {
+        List<ToDo> toDoList = new ArrayList<ToDo>();
         if (session.getAttribute("user") != null) {
             model.addAttribute("user", session.getAttribute("user"));
         }
 
-        Iterable<ToDo> allTodos = todos.findAll();
-        List<ToDo> toDoList = new ArrayList<>();
-        for (ToDo currentToDo : allTodos) {
-            toDoList.add(currentToDo);
+        User myUser = (User)session.getAttribute("user");
+        if (myUser != null) {
+            toDoList = todos.findByUser(myUser);
         }
+//        else {
+//            Iterable<ToDo> alltodos = todos.findAll();
+//            for (ToDo currentToDo : alltodos) {
+//                toDoList.add(currentToDo);
+//            }
+//        }
         model.addAttribute("todos", toDoList);
 
         return "home";
@@ -86,6 +91,15 @@ public class ToDoController {
 
         return "redirect:/";
     }
+
+//    @RequestMapping(path = "/create-user", method = RequestMethod.GET)
+//    public String createNewUser() {
+//        if (user == null) {
+//            user = new User(userName, password);
+//            users.save(user);
+//        }
+//        else
+//    }
 
 //    @RequestMapping(path = "/modify", method = RequestMethod.GET)
 //    public String modify(Model model, Integer todoID) {
