@@ -44,7 +44,7 @@ public class ToDoController {
         } else {
             session.setAttribute("user", user);
         }
-        return "redirect:/";
+        return "redirect:/todos";
     }
 
     @RequestMapping(path = "/logout", method = RequestMethod.POST)
@@ -90,6 +90,11 @@ public class ToDoController {
         }
 
         return "redirect:/";
+    }
+
+    @RequestMapping(path = "/todos", method = RequestMethod.GET)
+    public String jsonToDos() {
+        return "todo";
     }
 
 //    @RequestMapping(path = "/create-user", method = RequestMethod.GET)

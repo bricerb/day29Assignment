@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TIYAngularToDoApp">
+
+<!--
+{{! changing the mustache delimiter so it doesn't conflict with  }}
+{{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+{{=<% %>=}}
+-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="../static/tiy-ng-controller-todos.js"></script>
+<script src="js/tiy-ng-controller-todos.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<span><input type="button" ng-click="getToDo()" value="Refresh"/></span>
+
+<body style="background:grey;" ng-controller="SampleController">
+
+<span>New Item: <input type="text" ng-model="newToDo.text"/></span>
+<span>  <button ng-click="addToDo()">Add</button></span>
+
+<h2>ToDo List</h2>
+<ul>
+    <li ng-repeat="todo in todos">
+        {{todo.text}} - {{todo.done}}
+        <button ng-click="toggleToDo(todo.id)">Toggle</button>
+        <button ng-click="deleteToDo(todo.id)">Delete</button>
+    </li>
+</ul>
+
+
+
+</body>
+</html>

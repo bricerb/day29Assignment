@@ -11,9 +11,6 @@ import java.util.List;
 
 
 public interface ToDoRepo extends CrudRepository<ToDo, Integer> {
-
     List<ToDo> findByUser(User user);
-
-//    @Query("SELECT g FROM ToDo g WHERE g.name LIKE ?1%")
-//    List<ToDo> findByNameStartsWith(String name);
+    List<ToDo> findAllByOrderById();
 }
