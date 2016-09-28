@@ -14,6 +14,7 @@ angular.module('TIYAngularToDoApp', [])
                     function errorCallback(response) {
                         console.log("Unable to get data");
                     });
+        };
 
         $scope.addToDo = function() {
             console.log("About to add the following todo " + JSON.stringify($scope.newToDo));
@@ -41,10 +42,10 @@ angular.module('TIYAngularToDoApp', [])
                         console.log(response.data);
                         $scope.todos = response.data;
                         },
-                    function errorDelete(response) {
+                    function errorDelete(response) {make
                         console.log("Unable to delete");
                         });
-            };
+        };
 
         $scope.toggleToDo = function(todoID) {
             console.log("toggling");
@@ -60,7 +61,6 @@ angular.module('TIYAngularToDoApp', [])
                 }
                 )};
 
-        }
         $scope.getToDo();
         $scope.newToDo = {};
 
